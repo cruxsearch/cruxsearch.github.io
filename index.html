@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CruxSearch: Benchmarking Reasoning-Intensive Multimodal Agentic Search</title>
+  <meta name="description" content="CruxSearch is a benchmark of 223 expert-verified tasks in which multimodal search agents must reason to decide what visual evidence to seek and what it implies.">
+  <meta name="color-scheme" content="light">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cruxsearch.github.io/">
+  <meta property="og:title" content="CruxSearch: Benchmarking Reasoning-Intensive Multimodal Agentic Search">
+  <meta property="og:description" content="223 Reasoning-in-the-Loop tasks across Correction, Reduction, Clue Unification, and X-View Closure. The best of 19 models reaches 62.78% accuracy.">
+  <meta property="og:image" content="https://cruxsearch.github.io/static/img/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CruxSearch: Benchmarking Reasoning-Intensive Multimodal Agentic Search">
+  <meta name="twitter:description" content="223 Reasoning-in-the-Loop tasks across Correction, Reduction, Clue Unification, and X-View Closure. The best of 19 models reaches 62.78% accuracy.">
+  <meta name="twitter:image" content="https://cruxsearch.github.io/static/img/og.jpg">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d4f91'/%3E%3Ccircle cx='28' cy='28' r='13' fill='none' stroke='white' stroke-width='6'/%3E%3Cpath d='M38 38l12 12' stroke='white' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="container nav-inner" aria-label="Sections">
+    <a class="brand" href="#top">CruxSearch</a>
+    <div class="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="#benchmark">Benchmark</a>
+      <a href="#leaderboard">Leaderboard</a>
+      <a href="#analysis">Analysis</a>
+      <a href="#citation">Citation</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <div class="container">
+      <h1>
+        <span class="project-name">CruxSearch</span>
+        Benchmarking <span class="nowrap">Reasoning-Intensive</span> Multimodal Agentic Search
+      </h1>
+
+      <p class="authors">
+        <span class="author">Li Huang<sup>1,*</sup></span>
+        <span class="author">Eric Tao<sup>1,*</sup></span>
+        <span class="author">Minhao Sun<sup>2,*</sup></span>
+        <span class="author">Liyan Liu<sup>1</sup></span>
+        <span class="author">Zhijing Wu<sup>2</sup></span>
+        <span class="author">Xiaohan Yu<sup>1</sup></span>
+        <span class="author">Lang Mei<sup>1</sup></span>
+        <span class="author">Chao Feng<sup>1</sup></span>
+        <span class="author">Jinchao Ma<sup>1</sup></span>
+        <span class="author">Sichen Kang<sup>1</sup></span>
+        <span class="author">Siyu Mo<sup>1</sup></span>
+        <span class="author">Ziao Ma<sup>2</sup></span>
+        <span class="author">Ying Wang<sup>1</sup></span>
+        <span class="author">Chong Chen<sup>1,†</sup></span>
+      </p>
+      <p class="affiliations">
+        <span class="affiliation"><sup>1</sup>Huawei</span>
+        <span class="affiliation"><sup>2</sup>Beijing Institute of Technology</span>
+      </p>
+      <p class="author-notes"><span><sup>*</sup>Equal contribution</span> <span><sup>†</sup>Corresponding author</span></p>
+
+      <div class="resources">
+        <span class="resource is-soon" aria-disabled="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>
+          Paper <small>coming soon</small>
+        </span>
+        <span class="resource is-soon" aria-disabled="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>
+          Code <small>coming soon</small>
+        </span>
+        <span class="resource is-soon" aria-disabled="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.5"/><path d="M4.5 5.5v13c0 1.4 3.4 2.5 7.5 2.5s7.5-1.1 7.5-2.5v-13M4.5 12c0 1.4 3.4 2.5 7.5 2.5s7.5-1.1 7.5-2.5"/></svg>
+          Dataset <small>coming soon</small>
+        </span>
+        <a class="resource" href="#leaderboard">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V11M12 20V4M19 20v-6"/></svg>
+          Leaderboard
+        </a>
+        <a class="resource" href="#citation">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h4v4c0 3-1.5 5-4 6M14 7h4v4c0 3-1.5 5-4 6"/></svg>
+          BibTeX
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="teaser">
+    <div class="container">
+      <figure class="fig">
+        <button class="zoom" type="button" data-zoom="static/img/cruxsearch-overview.webp" aria-label="Enlarge the CruxSearch overview figure">
+          <img src="static/img/cruxsearch-overview.webp" width="2200" height="1265" alt="Four example tasks, one per family: Correction recovers an edited cottage roof, Reduction identifies a game and reads a wing colour, Clue Unification links two footballers to a stadium detail, and X-View Closure aligns gallery views to count fruit motifs.">
+        </button>
+        <figcaption><strong>CruxSearch and the <em>Reasoning-in-the-Loop</em> paradigm.</strong> <b>Correction (C)</b> verifies an edited cottage roof and recovers its original state. <b>Reduction (R)</b> identifies a game through visual constraints and reads the wing colour in the specified quadrant. <b>Clue Unification (U)</b> links Rodri and Lautaro Martínez through the 2026 World Cup final squads to read 50 at MetLife Stadium's west entrance. <b>X-View Closure (X)</b> aligns gallery views to count fruit motifs on Hannah Babcock's <i>Salt</i>.</figcaption>
+      </figure>
+
+      <p class="tldr"><b>TL;DR</b> CruxSearch is a benchmark of 223 expert-verified tasks in which a multimodal search agent must reason to decide what visual evidence to seek and what that evidence implies. The strongest of 19 models answers 62.78% of tasks correctly.</p>
+
+      <dl class="stats">
+        <div class="stat"><dt>Expert-verified tasks</dt><dd>223</dd></div>
+        <div class="stat"><dt>Task families</dt><dd>4</dd></div>
+        <div class="stat"><dt>Domain groups</dt><dd>8</dd></div>
+        <div class="stat"><dt>Models evaluated</dt><dd>19</dd></div>
+        <div class="stat"><dt>Best accuracy, <span class="nowrap">Claude-Opus-5.5</span></dt><dd>62.78%</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section" id="overview">
+    <div class="container narrow">
+      <h2>Abstract</h2>
+      <p>Multimodal search agents gather evidence from the open web and reason over incomplete observations. While recent benchmarks heavily involve image retrieval and inspection, visual evidence often serves as a superficial component rather than a driver for compositional or cross-modal validation reasoning. As a result, agents can succeed without intensive reasoning, leaving intermediate inference untested. To bridge this gap, we introduce <b>CruxSearch</b>, a benchmark of 223 tasks featuring a <em>Reasoning-in-the-Loop</em> design that demands intensive reasoning throughout the search process. The benchmark spans four task families: <b>C</b>orrection, <b>R</b>eduction, Clue <b>U</b>nification, and <b>X</b>-View Closure. These tasks respectively involve correcting factual image edits through web-based verification, narrowing candidate sets via visual constraints, connecting independent clues through shared entities or events, and aligning complementary views. Experiments across 19 proprietary and open-source models show that current agents remain far from solving reasoning-intensive multimodal search, with even the top-performing Claude-Opus-5.5 achieving only 62.78% accuracy. These results underscore persistent challenges in iterative visual seeking, candidate refinement, and cross-modal verification. Our benchmark and evaluation code will be publicly released.</p>
+    </div>
+  </section>
+
+  <section class="section soft" id="paradigm">
+    <div class="container split">
+      <div class="split-text">
+        <h2>Reasoning-in-the-Loop</h2>
+        <p>Every CruxSearch task places a reasoning crux between the available evidence and the answer. Two complementary kinds of inference carry the agent across it.</p>
+        <h3>Reasoning to acquire visual evidence</h3>
+        <p>The agent assesses what its evidence already establishes, identifies the remaining gap, and decides which objects, viewpoints, or search directions to pursue when the needed cue is out of reach of a direct web search.</p>
+        <h3>Reasoning over visual observations</h3>
+        <p>The agent interprets partial views, cross-validates sources, separates competing candidates, and infers spatial or implicit relations.</p>
+        <p>In the example, the stage design and the speaker backdrop each match several environmental events. Checking both constraints against retrieved photographs isolates Eco Expo Asia, and an aerial view of its venue supplies the answer.</p>
+      </div>
+      <figure class="fig split-fig">
+        <button class="zoom" type="button" data-zoom="static/img/paradigm-contrast.webp" aria-label="Enlarge the Reasoning-in-the-Loop example">
+          <img src="static/img/paradigm-contrast.webp" width="1475" height="2313" loading="lazy" alt="A Reduction trajectory: a poster places the event in Hong Kong, stage and backdrop constraints eliminate Green Week, Earth Hour, and the Environment Awards, and an aerial view of AsiaWorld-Expo shows an orange sea-facing facade.">
+        </button>
+        <figcaption>Answering the query requires narrowing event candidates through visual constraints, identifying the selected event's venue, and locating its sea-facing ground-floor facade in an aerial view to read its colour.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="benchmark">
+    <div class="container">
+      <h2>Four task families</h2>
+      <p class="lede">Each task provides a question and any accompanying images. The agent searches the open web, visits sources, and inspects images; each family requires a distinct intermediate conclusion that directs further retrieval or connects retrieved evidence to the answer.</p>
+
+      <div class="families">
+        <article class="family" style="--fam: var(--fam-c)">
+          <header><span class="fam-letter">C</span><h3>Correction</h3><span class="fam-count">59 tasks</span></header>
+          <p>A plausible local edit alters an externally documented fact. The agent locates the edit and recovers the original content from external records.</p>
+        </article>
+        <article class="family" style="--fam: var(--fam-r)">
+          <header><span class="fam-letter">R</span><h3>Reduction</h3><span class="fam-count">53 tasks</span></header>
+          <p>Visually verifiable constraints separate a target from competing candidates that share its appearance or venue context.</p>
+        </article>
+        <article class="family" style="--fam: var(--fam-u)">
+          <header><span class="fam-letter">U</span><h3>Clue Unification</h3><span class="fam-count">94 tasks</span></header>
+          <p>Two image clues meet at an unnamed shared entity or event. Recovering this hub anchors the retrieval of the answer-bearing image.</p>
+        </article>
+        <article class="family" style="--fam: var(--fam-x)">
+          <header><span class="fam-letter">X</span><h3>X-View Closure</h3><span class="fam-count">17 tasks</span></header>
+          <p>The input view hides the queried detail. The agent locates the target in a complementary view through spatial correspondence.</p>
+        </article>
+      </div>
+
+      <div class="compare">
+        <div class="compare-table">
+          <h3>Evidence operations across benchmarks</h3>
+          <div class="table-scroll">
+            <table class="cmp">
+              <thead>
+                <tr>
+                  <th scope="col" rowspan="2">Benchmark</th>
+                  <th scope="colgroup" colspan="2">Search setting</th>
+                  <th scope="colgroup" colspan="4">Evidence operation</th>
+                </tr>
+                <tr>
+                  <th scope="col">Open-web search</th>
+                  <th scope="col">Multi-branch search</th>
+                  <th scope="col">Factual correction</th>
+                  <th scope="col">Candidate reduction</th>
+                  <th scope="col">Clue unification</th>
+                  <th scope="col">Cross-view alignment</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">MMSearch</th><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td></tr>
+                <tr><th scope="row">MMBC</th><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td></tr>
+                <tr><th scope="row">VDR-Bench</th><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td><td class="n">✗</td></tr>
+                <tr><th scope="row">MMSearch-Plus</th><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td></tr>
+                <tr><th scope="row">MC-Search</th><td class="n">✗</td><td class="y">✓</td><td class="n">✗</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td></tr>
+                <tr><th scope="row">InterLV-Search</th><td class="y">✓</td><td class="y">✓</td><td class="n">✗</td><td class="y">✓</td><td class="n">✗</td><td class="n">✗</td></tr>
+                <tr class="ours"><th scope="row">CruxSearch</th><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note">✓ / ✗: task requirement specified / not specified in the original paper.</p>
+        </div>
+        <figure class="fig compare-fig">
+          <img src="static/img/domain-composition.webp" width="1125" height="850" loading="lazy" alt="Donut chart of 223 tasks over eight domain groups: Society and Public Affairs 41, Science and Academia 38, Technology and Engineering 33, Media and Games 33, Arts and Music 29, Sports 21, Medicine and Biology 14, Geography 14.">
+          <figcaption>Eight domain groups, aggregated from 21 source labels across 223 tasks.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft" id="construction">
+    <div class="container">
+      <h2>Construction and verification</h2>
+      <p class="lede">Each pipeline starts from a source-supported target and builds the evidence relation needed to recover it. Correction, Reduction, and Clue Unification use model-assisted pipelines that retain retrieval records and intermediate decisions; X-View Closure is curated manually with correspondence checks and a search-based difficulty probe.</p>
+      <figure class="fig">
+        <button class="zoom" type="button" data-zoom="static/img/construction-pipelines.webp" aria-label="Enlarge the construction pipelines figure">
+          <img src="static/img/construction-pipelines.webp" width="2400" height="1800" loading="lazy" alt="Four construction pipelines: Correction gates seeds by reverse search and applies localized verified edits; Reduction filters a candidate pool by visual constraints; Clue Unification expands two branches from a hidden hub and validates the reference chain; X-View Closure matches an occluded input view to a retrieved view and probes difficulty.">
+        </button>
+        <figcaption>C changes a source-supported fact, R retains competing candidates until visual constraints separate them, U masks a shared hub, and X withholds the answer-bearing view. C screens local edits, R and U validate reference chains, and X checks cross-view correspondence and search difficulty.</figcaption>
+      </figure>
+      <div class="facts">
+        <div class="fact"><h3>Shortcut screening</h3><p>Family-specific checks reject directly recoverable originals or conspicuous edits (C), nonselective constraints (R), disclosed hubs (U), and directly visible answers (X).</p></div>
+        <div class="fact"><h3>Reference-chain validation</h3><p>From 425 seeds, the automatic pipelines produce 931 candidate groups and 699 questions, and 342 pass reference-chain validation: an agent retrieves evidence for every named checkpoint and recovers the answer without seeing the target image or label.</p></div>
+        <div class="fact"><h3>Expert verification</h3><p>Fifteen experts with PhDs verify every task. Reviewers other than its creators revisit key sources, reproduce the inferences, and record their answers before comparing them with the reference. The benchmark keeps 200 automatically and 23 manually constructed tasks.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="leaderboard">
+    <div class="container">
+      <h2>Leaderboard</h2>
+      <p class="lede">Accuracy (%) over all 223 tasks and per task family, and mean interaction turns per task. All models run the same ReAct agent with a 50-turn limit and tools for web search, webpage fetch, text-to-image search, reverse image search, and image cropping. A DeepSeek-v4.1-Flash judge scores answers at temperature 0.</p>
+
+      <div class="lb-controls">
+        <div class="seg" role="group" aria-label="Model type">
+          <button type="button" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" data-filter="closed" aria-pressed="false">Closed-source</button>
+          <button type="button" data-filter="open" aria-pressed="false">Open-source</button>
+        </div>
+        <div class="seg" role="group" aria-label="Task-family metric">
+          <button type="button" data-metric="acc" aria-pressed="true">Family accuracy</button>
+          <button type="button" data-metric="turn" aria-pressed="false">Family turns</button>
+        </div>
+      </div>
+
+      <div class="table-scroll">
+        <table class="lb" id="lb">
+          <thead>
+            <tr>
+              <th scope="col" class="c-rank">#</th>
+              <th scope="col" class="c-model" data-key="name"><button type="button">Model</button></th>
+              <th scope="col" class="c-overall" data-key="acc0"><button type="button">Overall <span class="unit">Acc</span></button></th>
+              <th scope="col" data-key="turn0"><button type="button">Turns</button></th>
+              <th scope="col" data-key="f1"><button type="button"><span class="fam-dot" style="--fam: var(--fam-c)"></span>C <span class="unit" data-unit></span></button></th>
+              <th scope="col" data-key="f2"><button type="button"><span class="fam-dot" style="--fam: var(--fam-r)"></span>R <span class="unit" data-unit></span></button></th>
+              <th scope="col" data-key="f3"><button type="button"><span class="fam-dot" style="--fam: var(--fam-u)"></span>U <span class="unit" data-unit></span></button></th>
+              <th scope="col" data-key="f4"><button type="button"><span class="fam-dot" style="--fam: var(--fam-x)"></span>X <span class="unit" data-unit></span></button></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="note">Click a column heading to sort. Bold marks the best accuracy among the models shown. C: Correction, R: Reduction, U: Clue Unification, X: X-View Closure; family accuracy uses the full family size as denominator.</p>
+    </div>
+  </section>
+
+  <section class="section soft" id="analysis">
+    <div class="container">
+      <h2>Analysis</h2>
+
+      <div class="finding">
+        <div class="finding-text">
+          <h3>CruxSearch rewards additional reasoning</h3>
+          <p>With the backbone fixed, CruxSearch shows the largest accuracy gain among four benchmarks for both Qwen3.8-Max and GPT-6.1-sol. Raising Qwen3.8-Max from a 4k to a 256k thinking budget adds 15.70 points on CruxSearch, against 0.32 on MMSearch-Plus and 3.00 on BrowseComp-V3. GPT-6.1-sol gains 12.56 points from Low to Max effort.</p>
+          <p>Resolving the crux tracks success: on 100 shared Reduction and Clue Unification tasks, trajectories that resolve it are 40.1 points (Qwen3.8-Max, 16k) and 19.8 points (Claude-Opus-5.5, Max) more accurate.</p>
+        </div>
+        <figure class="fig">
+          <button class="zoom" type="button" data-zoom="static/img/budget-overview.webp" aria-label="Enlarge the reasoning-budget figure">
+            <img src="static/img/budget-overview.webp" width="1538" height="1375" loading="lazy" alt="Accuracy gain versus thinking budget or reasoning effort for Qwen3.8-Flash, Qwen3.8-Max, and GPT-6.1-sol on four benchmarks, with CruxSearch reaching +13.9, +15.7, and +12.6 points; and answer accuracy for resolved versus unresolved cruxes.">
+          </button>
+          <figcaption>Reasoning gains across benchmarks (a–c) and within-model accuracy by crux status on the same 100 R/U tasks (d); Δ is resolved minus unresolved accuracy.</figcaption>
+        </figure>
+      </div>
+
+      <div class="finding reverse">
+        <div class="finding-text">
+          <h3>More reasoning moves effort to sources and pixels</h3>
+          <p>At higher settings, Qwen3.8-Max and Claude-Opus-5.5 both retrieve pages, crop images, and run reverse-image search more often per turn while issuing fewer web queries. Cropping becomes Claude-Opus-5.5's most frequent tool at Max effort.</p>
+          <p>Correction and X-View Closure keep the largest shares of tasks that no tested setting solves: 42% and 35% for Claude-Opus-5.5.</p>
+        </div>
+        <figure class="fig">
+          <button class="zoom" type="button" data-zoom="static/img/cross-model-huangli.webp" aria-label="Enlarge the answer outcomes and tool use figure">
+            <img src="static/img/cross-model-huangli.webp" width="1538" height="1844" loading="lazy" alt="Stacked bars of always-correct, sometimes-correct, and always-incorrect task shares per family for Qwen3.8-Max and Claude-Opus-5.5, and tool calls per turn for web search, page retrieval, cropping, text-to-image, and image-to-image search at low and high reasoning settings.">
+          </button>
+          <figcaption>Answer outcomes (a, b) and tool calls per turn (c, d). Outcome sweeps use No thinking/4k/8k/16k for Qwen3.8-Max and Low/Medium/Max for Claude-Opus-5.5; percentages mark tasks never solved.</figcaption>
+        </figure>
+      </div>
+
+      <div class="finding">
+        <div class="finding-text">
+          <h3>Failures split between finding and reading evidence</h3>
+          <p>Across 362 incorrect responses from four models, search-strategy failures lead for Claude-Opus-5.5 and Kimi-k3, perception failures for GPT-6.1-sol, and reasoning drift for Qwen3.8-Max. These profiles separate choosing relevant evidence, reading observations, and keeping conclusions grounded in that evidence.</p>
+        </div>
+        <figure class="fig fig-small">
+          <img src="static/img/failure-distribution.webp" width="1000" height="525" loading="lazy" alt="Failure-category percentages. Claude-Opus-5.5: perception 32.1, search strategy 38.3, reasoning drift 22.2, entity alignment 0.0, evidence integration 7.4. GPT-6.1-sol: 36.4, 32.5, 20.8, 0.0, 10.4. Kimi-k3: 31.1, 40.0, 22.2, 0.0, 6.7. Qwen3.8-Max: 22.8, 30.7, 36.0, 2.6, 7.9.">
+          <figcaption>Failure-category distributions (%) over incorrect responses; Qwen3.8-Max uses a 256k thinking budget.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="citation">
+    <div class="container narrow">
+      <div class="cite-head">
+        <h2>Citation</h2>
+        <button class="copy" type="button" data-copy="bibtex">Copy BibTeX</button>
+      </div>
+      <pre class="bibtex"><code id="bibtex">@misc{huang2026cruxsearch,
+  title        = {CruxSearch: Benchmarking Reasoning-Intensive Multimodal Agentic Search},
+  author       = {Huang, Li and Tao, Eric and Sun, Minhao and Liu, Liyan and Wu, Zhijing and Yu, Xiaohan and Mei, Lang and Feng, Chao and Ma, Jinchao and Kang, Sichen and Mo, Siyu and Ma, Ziao and Wang, Ying and Chen, Chong},
+  year         = {2026},
+  howpublished = {\url{https://cruxsearch.github.io}}
+}</code></pre>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>CruxSearch · Huawei · Beijing Institute of Technology</p>
+  </div>
+</footer>
+
+<dialog class="lightbox" id="lightbox" aria-label="Enlarged figure">
+  <form method="dialog"><button class="lightbox-close" aria-label="Close">×</button></form>
+  <img alt="">
+</dialog>
+
+<script src="static/js/main.js" defer></script>
+</body>
+</html>
