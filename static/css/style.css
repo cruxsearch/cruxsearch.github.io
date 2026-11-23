@@ -42,7 +42,8 @@ button { font: inherit; color: inherit; cursor: pointer; }
 /* Header */
 .site-header { position: sticky; top: 0; z-index: 20; background: rgba(255, 255, 255, 0.96); border-bottom: 1px solid var(--line); backdrop-filter: saturate(1.4) blur(6px); }
 .nav-inner { min-height: 58px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-.brand { color: var(--accent); font-size: 20px; font-weight: 700; letter-spacing: -0.02em; text-decoration: none; }
+.brand { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-size: 20px; font-weight: 700; letter-spacing: -0.02em; text-decoration: none; }
+.brand img { width: auto; height: 34px; }
 .nav-links { display: flex; gap: 26px; }
 .nav-links a { color: var(--muted); font-size: 15px; font-weight: 500; text-decoration: none; }
 .nav-links a:hover, .nav-links a.is-current { color: var(--accent); }
@@ -50,7 +51,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 /* Hero */
 .hero { padding: 48px 0 12px; text-align: center; }
 .hero h1 { margin: 0 auto 26px; max-width: 900px; font-size: clamp(24px, 3vw, 34px); font-weight: 600; color: var(--ink-2); }
-.project-name { display: block; margin-bottom: 10px; font-size: clamp(46px, 6vw, 68px); font-weight: 700; letter-spacing: -0.035em; color: var(--accent); }
+.hero-logo { width: min(260px, 58vw); height: auto; margin: 0 auto 18px; }
 .authors { max-width: 940px; margin: 0 auto 6px; font-size: 17px; line-height: 1.8; }
 .author { display: inline-block; white-space: nowrap; margin: 0 7px; }
 .author sup, .affiliation sup, .author-notes sup { font-size: 11px; color: var(--muted); margin-left: 1px; }
