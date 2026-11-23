@@ -228,38 +228,33 @@
   <section class="section" id="leaderboard">
     <div class="container">
       <h2>Leaderboard</h2>
-      <p class="lede">Accuracy (%) over all 223 tasks and per task family, and mean interaction turns per task. All models run the same ReAct agent with a 50-turn limit and tools for web search, webpage fetch, text-to-image search, reverse image search, and image cropping. A DeepSeek-v4.1-Flash judge scores answers at temperature 0.</p>
+      <p class="lede">Accuracy (%) and mean interaction turns per task, over all 223 tasks and within each task family. All models run the same ReAct agent with a 50-turn limit and tools for web search, webpage fetch, text-to-image search, reverse image search, and image cropping. A DeepSeek-v4.1-Flash judge scores answers at temperature 0.</p>
 
-      <div class="lb-controls">
-        <div class="seg" role="group" aria-label="Model type">
-          <button type="button" data-filter="all" aria-pressed="true">All</button>
-          <button type="button" data-filter="closed" aria-pressed="false">Closed-source</button>
-          <button type="button" data-filter="open" aria-pressed="false">Open-source</button>
-        </div>
-        <div class="seg" role="group" aria-label="Task-family metric">
-          <button type="button" data-metric="acc" aria-pressed="true">Family accuracy</button>
-          <button type="button" data-metric="turn" aria-pressed="false">Family turns</button>
-        </div>
+      <div class="lb-tabs" role="tablist" aria-label="Leaderboard by task family">
+        <button type="button" role="tab" id="lb-tab-0" aria-controls="lb-panel" aria-selected="true" data-view="0">Overall</button>
+        <button type="button" role="tab" id="lb-tab-1" aria-controls="lb-panel" aria-selected="false" tabindex="-1" data-view="1"><span class="fam-dot" style="--fam: var(--fam-c)"></span>Correction</button>
+        <button type="button" role="tab" id="lb-tab-2" aria-controls="lb-panel" aria-selected="false" tabindex="-1" data-view="2"><span class="fam-dot" style="--fam: var(--fam-r)"></span>Reduction</button>
+        <button type="button" role="tab" id="lb-tab-3" aria-controls="lb-panel" aria-selected="false" tabindex="-1" data-view="3"><span class="fam-dot" style="--fam: var(--fam-u)"></span>Clue Unification</button>
+        <button type="button" role="tab" id="lb-tab-4" aria-controls="lb-panel" aria-selected="false" tabindex="-1" data-view="4"><span class="fam-dot" style="--fam: var(--fam-x)"></span>X-View Closure</button>
       </div>
 
-      <div class="table-scroll">
-        <table class="lb" id="lb">
-          <thead>
-            <tr>
-              <th scope="col" class="c-rank">#</th>
-              <th scope="col" class="c-model" data-key="name"><button type="button">Model</button></th>
-              <th scope="col" class="c-overall" data-key="acc0"><button type="button">Overall <span class="unit">Acc</span></button></th>
-              <th scope="col" data-key="turn0"><button type="button">Turns</button></th>
-              <th scope="col" data-key="f1"><button type="button"><span class="fam-dot" style="--fam: var(--fam-c)"></span>C <span class="unit" data-unit></span></button></th>
-              <th scope="col" data-key="f2"><button type="button"><span class="fam-dot" style="--fam: var(--fam-r)"></span>R <span class="unit" data-unit></span></button></th>
-              <th scope="col" data-key="f3"><button type="button"><span class="fam-dot" style="--fam: var(--fam-u)"></span>U <span class="unit" data-unit></span></button></th>
-              <th scope="col" data-key="f4"><button type="button"><span class="fam-dot" style="--fam: var(--fam-x)"></span>X <span class="unit" data-unit></span></button></th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+      <div class="lb-panel" id="lb-panel" role="tabpanel" aria-labelledby="lb-tab-0">
+        <div class="lb-controls">
+          <p class="lb-desc" id="lb-desc"></p>
+          <div class="seg" role="group" aria-label="Model type">
+            <button type="button" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" data-filter="closed" aria-pressed="false">Closed-source</button>
+            <button type="button" data-filter="open" aria-pressed="false">Open-source</button>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table class="lb" id="lb" data-view="0">
+            <thead></thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </div>
-      <p class="note">Click a column heading to sort. Bold marks the best accuracy among the models shown. C: Correction, R: Reduction, U: Clue Unification, X: X-View Closure; family accuracy uses the full family size as denominator.</p>
+      <p class="note">Click a column heading to sort. Ranks follow accuracy in the selected view, and bold marks the best accuracy among the models shown. Family accuracy uses the full family size as denominator.</p>
     </div>
   </section>
 
